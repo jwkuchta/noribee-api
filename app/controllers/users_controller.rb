@@ -6,23 +6,22 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = User.find_by(nickname: params['nickname'])
+        user = User.find_by(sub: params['sub'])
         render json: user
     end
 
     def create
-        byebug
-        if User.find_by(nickname: params['nickname']) == nil
-            user = User.create(user_params)
+        user = User.create(user_params)
+        if user.valid?
             render json: { message: 'user successfully created' }
         else
-            render json: {message: 'user already exixsts'}
+            render json: { message: 'user already exists' }
         end
     end
 
     private
     def user_params
-        params.require(:user).permit(:nickname)
+        params.require(:user).permit(:sub, :nickname, :social_id, :email, :name, :picture)
     end
 
 end
