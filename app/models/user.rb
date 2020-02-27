@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-    validates :sub, uniqueness: {case_sensitive: false}
+    validates :user_id, uniqueness: {case_sensitive: false}
 end

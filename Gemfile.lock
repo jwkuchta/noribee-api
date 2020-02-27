@@ -192,6 +192,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   devise
+  jwt
   knock
   listen (>= 3.0.5, < 3.2)
   omniauth
